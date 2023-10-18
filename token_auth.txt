@@ -1,0 +1,29 @@
+Q. how does web apps use token to authenticate the user
+
+Web applications commonly use tokens for user authentication. Token-based authentication is a stateless way to verify a user's identity and permissions. Here's a general overview of how it works:
+
+1. User Authentication:
+   When a user logs into a web application, they provide their credentials, such as a username and password. The server then validates these credentials.
+
+2. Token Generation:
+   After successful authentication, the server generates a token. This token contains information about the user's identity and permissions. It is typically encoded and signed to ensure its integrity. Common token formats include JSON Web Tokens (JWT) and OAuth2 tokens.
+
+3. Token Storage:
+   The token is then sent to the client (browser) and usually stored in a secure manner, such as in a cookie or the browser's local storage.
+
+4. Subsequent Requests:
+   For all subsequent requests to the server, the client includes the token in the request headers. This is often done using the "Authorization" header with the "Bearer" keyword, like "Authorization: Bearer <token>".
+
+5. Token Verification:
+   When the server receives a request with a token, it checks the token's validity. It verifies the token's signature to ensure it hasn't been tampered with and that it was issued by a trusted entity. It also checks the token's expiration date and, if needed, its permissions to ensure the user is allowed to access the requested resource.
+
+6. User Identification:
+   If the token is valid, the server uses the information contained within it to identify the user associated with the request. This allows the server to apply appropriate access controls and serve the requested data or perform actions on behalf of the user.
+
+7. Token Refresh (Optional):
+   Tokens often have a limited lifespan for security reasons. If a token expires, the user may need to re-authenticate. However, some applications implement token refresh mechanisms, allowing the client to obtain a new token without re-entering their credentials.
+
+Token-based authentication offers several advantages, including scalability, the ability to work with various client types (e.g., web, mobile, and API clients), and the option to delegate authentication to third-party identity providers (e.g., social login). However, it also requires proper security measures, such as securely handling tokens and regularly rotating them to mitigate security risks.
+
+level1: storing username, password as plain text
+level2: storing after encryption and using .env
